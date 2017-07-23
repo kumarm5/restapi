@@ -1,12 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from todo.serializers import TaskSerializer
+from todo.models import Task
+from rest_framework.generics import ListAPIView
 
-# Create your views here.
-
-def home(request):
-    return HttpResponse('hello')
-
-def index(request):
-    data = { 'status': 'hello' }
-    return render(request, 'index.html', data)
-    
+class PostListAPIView(ListAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer

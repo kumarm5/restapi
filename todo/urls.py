@@ -1,7 +1,6 @@
 from django.conf.urls import url
-from todo.views import home, index
+from todo.views import PostListAPIView
 
 urlpatterns = [
-    url(r'^$', home, name='home'),
-    url(r'^index/', index)
+    url(r'^tasks/$', PostListAPIView.as_view()),
 ]
